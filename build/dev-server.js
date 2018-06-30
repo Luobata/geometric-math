@@ -1,3 +1,5 @@
+/* eslint-disable */
+
 var webpackConfig = require('./webpack.config.js');
 var webpack = require('webpack');
 var compiler = webpack(webpackConfig);
@@ -32,7 +34,7 @@ app.use(devMiddleware);
 app.use(hotMiddleware);
 
 // api
-var port = 9598;
+var port = 9498;
 app.use('/', express.static('./asserts/'));
 module.exports = app.listen(port, function(err) {
     if (err) {
