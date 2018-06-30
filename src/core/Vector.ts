@@ -40,10 +40,14 @@ export default class Vector {
     }
 
     // 向量模
-    public mod(): number {
-        return Math.sqrt(
-            Math.pow(this.vector.x, 2) + Math.pow(this.vector.y, 2),
-        );
+    public mod(isSqrt: boolean = true): number {
+        if (isSqrt) {
+            return Math.sqrt(
+                Math.pow(this.vector.x, 2) + Math.pow(this.vector.y, 2),
+            );
+        } else {
+            return Math.pow(this.vector.x, 2) + Math.pow(this.vector.y, 2);
+        }
     }
 
     // 垂直向量 默认返回单位向量

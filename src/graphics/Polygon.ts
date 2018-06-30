@@ -33,15 +33,9 @@ export default class Polygon {
      * @param axes 对应的投影轴
      */
     public getProject(axes: Vector): number[] {
-        // TODO
-        const axesLine: number[] = this.list.map((v: Point) => {
+        return this.list.map((v: Point) => {
             return new Vector(v).dot(axes);
         });
-        debugger;
-        const max: number = Math.max(...axesLine);
-        const min: number = Math.min(...axesLine);
-
-        return axesLine;
     }
 
     private vectorInit(): void {
