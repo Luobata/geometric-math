@@ -23,7 +23,7 @@ module.exports = {
         extensions: ['json', '.js', '.ts'],
         alias: {
             '@': path.resolve(__dirname, '../src'),
-            LIB: path.resolve(__dirname, '../src/canvas/lib'),
+            LIB: path.resolve(__dirname, '../src/lib'),
             ASSETS: path.resolve(__dirname, '../asserts'),
         },
     },
