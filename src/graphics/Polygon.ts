@@ -15,6 +15,27 @@ export default class Polygon {
         this.vectorInit();
     }
 
+    public isConvexHull(): boolean {
+        return true;
+    }
+
+    /**
+     * 返回多边形的所有投影轴
+     */
+    public getAxes(): Vector[] {
+        return this.listVector.map((v: Vector) => {
+            return v.normaliz();
+        });
+    }
+
+    /**
+     * 返回某条轴上的投影
+     * @param axes 对应的投影轴
+     */
+    public getProject(axes: Vector) {
+        // TODO
+    }
+
     private vectorInit(): void {
         for (let i: number = 0; i < this.list.length - 1; i = i + 1) {
             this.listVector.push(
@@ -27,9 +48,5 @@ export default class Polygon {
                 new Vector(this.list[0]),
             ),
         );
-    }
-
-    private isConvexHull(): boolean {
-        return true;
     }
 }

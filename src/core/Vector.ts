@@ -54,4 +54,16 @@ export default class Vector {
 
         return result > 180 ? result - 180 : result;
     }
+
+    // 转化为法向量
+    public normaliz(): Vector {
+        const x: number = Math.sqrt(
+            1 / (Math.pow(this.vector.y, 2) / Math.pow(this.vector.x, 2) + 1),
+        );
+
+        return {
+            x,
+            y: (this.vector.y / this.vector.x) * x,
+        };
+    }
 }
