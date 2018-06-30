@@ -46,6 +46,14 @@ export default class Vector {
         );
     }
 
+    // 垂直向量 默认返回单位向量
+    public vertical(): Vector {
+        return new Vector({
+            x: this.vector.y,
+            y: -this.vector.x,
+        }).normaliz();
+    }
+
     // 向量之间夹角
     public ankle(vec: Vector): number {
         const result: number =
@@ -61,9 +69,9 @@ export default class Vector {
             1 / (Math.pow(this.vector.y, 2) / Math.pow(this.vector.x, 2) + 1),
         );
 
-        return {
+        return new Vector({
             x,
-            y: (this.vector.y / this.vector.x) * x,
-        };
+            y: x === 0 ? 1 : (this.vector.y / this.vector.x) * x,
+        });
     }
 }

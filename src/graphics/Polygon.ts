@@ -24,7 +24,7 @@ export default class Polygon {
      */
     public getAxes(): Vector[] {
         return this.listVector.map((v: Vector) => {
-            return v.normaliz();
+            return v.vertical();
         });
     }
 
@@ -32,8 +32,16 @@ export default class Polygon {
      * 返回某条轴上的投影
      * @param axes 对应的投影轴
      */
-    public getProject(axes: Vector) {
+    public getProject(axes: Vector): number[] {
         // TODO
+        const axesLine: number[] = this.list.map((v: Point) => {
+            return new Vector(v).dot(axes);
+        });
+        debugger;
+        const max: number = Math.max(...axesLine);
+        const min: number = Math.min(...axesLine);
+
+        return axesLine;
     }
 
     private vectorInit(): void {

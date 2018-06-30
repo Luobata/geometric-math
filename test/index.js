@@ -18,7 +18,7 @@ window.onload = () => {
     document.body.appendChild(canvas);
 
     const g1 = [{ x: 10, y: 10 }, { x: 200, y: 10 }, { x: 150, y: 150 }];
-    const g2 = [{ x: 300, y: 100 }, { x: 200, y: 50 }, { x: 100, y: 150 }];
+    const g2 = [{ x: 300, y: 100 }, { x: 200, y: 50 }, { x: 500, y: 150 }];
 
     const renderPoint = (p, color = 'black') => {
         ctx.save();
@@ -40,5 +40,6 @@ window.onload = () => {
     };
 
     render();
-    geometric.polygon.intersection(g1, g2);
+    const a = geometric.polygon.intersection(g1, g2);
+    console.log(a);
 };
