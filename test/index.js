@@ -1,4 +1,6 @@
 /* eslint-disable */
+import geometric from '../src/';
+
 window.onload = () => {
     const canvas = document.createElement('canvas');
     const ctx = canvas.getContext('2d');
@@ -38,4 +40,5 @@ window.onload = () => {
     };
 
     render();
+    geometric.polygon.intersection(g1, g2);
 };
