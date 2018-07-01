@@ -26,6 +26,13 @@ window.onload = () => {
         },
         radius: 100,
     };
+    const c2 = {
+        center: {
+            x: 10,
+            y: 200,
+        },
+        radius: 80,
+    };
 
     const renderPoint = (p, color = 'black') => {
         ctx.save();
@@ -63,13 +70,16 @@ window.onload = () => {
         renderPoint(g1);
         renderPoint(g2, 'red');
         renderCirculr(c1);
+        renderCirculr(c2);
     };
 
     render();
     const a = geometric.polygon.intersection(g1, g2);
     const b = geometric.polygon.intersectionWithCircular(g1, c1);
     const c = geometric.polygon.intersectionWithCircular(g2, c1);
+    const d = geometric.circluar.intersection(c1, c2);
     console.log(`a： ${a}`);
     console.log(`b： ${b}`);
     console.log(`c： ${c}`);
+    console.log(`d： ${d}`);
 };
