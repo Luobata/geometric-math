@@ -14,6 +14,12 @@ export default {
         const point1: Polygon = new Polygon(p1);
         const point2: Polygon = new Polygon(p2);
 
+        if (!point1.isConvexHull() || !point2.isConvexHull()) {
+            debugger;
+            // 不是闭包 不能使用该方法判断
+            return false;
+        }
+
         const p1Axes: Vector[] = point1.getAxes();
         const p2Axes: Vector[] = point2.getAxes();
         const axes: Vector[] = p1Axes.concat(p2Axes);
@@ -39,6 +45,12 @@ export default {
     intersectionWithCircular(p1: PointList, p2: Round): boolean {
         const point1: Polygon = new Polygon(p1);
         const circular2: Circular = new Circular(p2);
+
+        if (!point1.isConvexHull()) {
+            debugger;
+            // 不是闭包 不能使用该方法判断
+            return false;
+        }
 
         const p1Axes: Vector[] = point1.getAxes();
         const cAxex: Vector = circular2.getAxes(p1);
