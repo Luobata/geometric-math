@@ -3,6 +3,12 @@
  * @time-complexity O(nlog(n))
  */
 
+/**
+ * 复杂度: 输入进行了排序，复杂度为nlog(n)(快排)
+ * 循环虽然有两层循环，但是因为每个点最多被删除一次， 所以第二层while 最多被执行n次
+ * 所以复杂度为O(n) + O(n)
+ */
+
 import Vector from '@/core/Vector';
 import { IPoint, IPointList } from '@/lib/interface';
 
