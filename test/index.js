@@ -41,7 +41,7 @@ window.onload = () => {
         radius: 80,
     };
 
-    const renderPoint = (p, color = 'black') => {
+    const renderIPoint = (p, color = 'black') => {
         ctx.save();
         ctx.beginPath();
         ctx.strokeStyle = color;
@@ -74,8 +74,8 @@ window.onload = () => {
     };
 
     const render = () => {
-        renderPoint(g1);
-        renderPoint(g2, 'red');
+        renderIPoint(g1);
+        renderIPoint(g2, 'red');
         renderCirculr(c1);
         renderCirculr(c2);
     };

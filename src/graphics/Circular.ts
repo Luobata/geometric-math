@@ -3,10 +3,10 @@
  */
 
 import Vector from '@/core/Vector';
-import { Point, PointList, Round } from '@/lib/interface';
+import { IPoint, IPointList, Round } from '@/lib/interface';
 
 export default class Circular {
-    public center: Point;
+    public center: IPoint;
     public radius: number;
     public radiusX: number;
     public radiusY: number;
@@ -17,10 +17,10 @@ export default class Circular {
         this.radius = round.radius;
     }
 
-    public getAxes(pointList: PointList): Vector {
+    public getAxes(IPointList: IPointList): Vector {
         let length!: number;
-        let p: Point;
-        for (const i of pointList) {
+        let p: IPoint;
+        for (const i of IPointList) {
             const tL: number = new Vector({
                 x: i.x - this.center.x,
                 y: i.y - this.center.y,

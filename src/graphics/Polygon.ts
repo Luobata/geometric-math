@@ -2,17 +2,17 @@
  * @description 多边形 不包括ellipsis
  */
 import Vector from '@/core/Vector';
-import { Point, PointList } from 'LIB/interface';
+import { IPoint, IPointList } from 'LIB/interface';
 
 export default class Polygon {
-    private list: PointList;
+    private list: IPointList;
     // 各个边向量
     private listVector: Vector[] = [];
 
     // list中点的顺序会导致点绘制的顺序，会影响是否是凸包的判断
-    constructor(list: PointList) {
+    constructor(list: IPointList) {
         if (list.length < 3) {
-            throw new Error('The point num must > 3 to close a polygon');
+            throw new Error('The IPoint num must > 3 to close a polygon');
         }
         this.list = list;
 
@@ -51,7 +51,7 @@ export default class Polygon {
      * @param axes 对应的投影轴
      */
     public getProject(axes: Vector): number[] {
-        return this.list.map((v: Point) => {
+        return this.list.map((v: IPoint) => {
             return new Vector(v).dot(axes);
         });
     }

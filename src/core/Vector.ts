@@ -1,15 +1,15 @@
 /**
  * @description Vector
  */
-import { Point } from '@/lib/interface';
+import { IPoint } from '@/lib/interface';
 
 /**
  * default class Vector
  */
 export default class Vector {
-    public vector: Point;
+    public vector: IPoint;
 
-    constructor(vector: Point) {
+    constructor(vector: IPoint) {
         this.vector = vector;
     }
 
