@@ -6,5 +6,8 @@ import { IPoint } from '@/lib/interface';
 
 export default class Point {
     private point: IPoint;
-    constructor() {}
+
+    constructor(point: IPoint) {
+        this.point = point;
+    }
 }
