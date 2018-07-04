@@ -26,6 +26,17 @@ window.onload = () => {
     ];
     // const g1 = [{ x: 150, y: 150 }, { x: 200, y: 10 }, { x: 10, y: 10 }];
     const g2 = [{ x: 300, y: 100 }, { x: 200, y: 50 }, { x: 500, y: 150 }];
+    const k = 4;
+    const g3 = [];
+    for (let i = 1; i < k; i++) {
+        for (let j = 1; j < k; j++) {
+            g3.push({
+                x: 10 * i,
+                y: 10 * j,
+            });
+        }
+    }
+    console.log(g3);
     const c1 = {
         center: {
             x: 200,
@@ -85,8 +96,10 @@ window.onload = () => {
     const b = geometric.polygon.intersectionWithCircular(g1, c1);
     const c = geometric.polygon.intersectionWithCircular(g2, c1);
     const d = geometric.circluar.intersection(c1, c2);
+    const f = geometric.point.findConvexHull(g3);
     console.log(`a： ${a}`);
     console.log(`b： ${b}`);
     console.log(`c： ${c}`);
     console.log(`d： ${d}`);
+    console.log(`f： ${f}`);
 };
