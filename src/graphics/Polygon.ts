@@ -63,11 +63,6 @@ export default class Polygon {
             );
         }
 
-        // this.listVector.push(
-        //     new Vector(this.list[this.list.length - 1]).minus(
-        //         new Vector(this.list[0]),
-        //     ),
-        // );
         this.listVector.push(
             new Vector(this.list[0]).minus(
                 new Vector(this.list[this.list.length - 1]),
