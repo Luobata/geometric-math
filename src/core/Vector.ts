@@ -30,11 +30,15 @@ export default class Vector {
     }
 
     // 向量点积
+    // 物理含义 可以用来vec 在当前向量上的投影
+    // 或者用来求两个向量的夹角
     public dot(vec: Vector): number {
         return this.vector.x * vec.vector.x + this.vector.y * vec.vector.y;
     }
 
-    // 向量叉积
+    // 向量叉积 的值
+    // 向量叉积的返回值应该是一个向量而非值，只是方向为垂直当前二维平面，所以在二维平面中，忽略他的方向
+    // 物理含义 用来求向量围成的平行四边形的面积
     public cross(vec: Vector): number {
         return this.vector.x * vec.vector.y - this.vector.y * vec.vector.x;
     }

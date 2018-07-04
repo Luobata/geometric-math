@@ -17,7 +17,13 @@ window.onload = () => {
 
     document.body.appendChild(canvas);
 
-    const g1 = [{ x: 10, y: 10 }, { x: 200, y: 10 }, { x: 150, y: 150 }];
+    // const g1 = [{ x: 10, y: 10 }, { x: 200, y: 10 }, { x: 150, y: 150 }];
+    const g1 = [
+        { x: 50, y: 10 },
+        { x: 200, y: 10 },
+        { x: 150, y: 110 },
+        { x: 125, y: 160 },
+    ];
     // const g1 = [{ x: 150, y: 150 }, { x: 200, y: 10 }, { x: 10, y: 10 }];
     const g2 = [{ x: 300, y: 100 }, { x: 200, y: 50 }, { x: 500, y: 150 }];
     const c1 = {
