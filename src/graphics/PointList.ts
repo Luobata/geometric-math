@@ -3,8 +3,9 @@
  */
 
 import Graham from '@/algorithm/convex-hull/Graham';
-import { IPoint, IPointList } from '@/lib/interface';
+import Melkman from '@/algorithm/convex-hull/Melkman';
 import Vector from '@/core/Vector';
+import { IPoint, IPointList } from '@/lib/interface';
 
 export default class PointList {
     // 点集 并且按夹角排序
@@ -19,7 +20,8 @@ export default class PointList {
             throw new Error('凸包的点个数不能小于3个');
         }
 
-        return Graham(this.sortByAngle(this.pointList));
+        // return Graham(this.sortByAngle(this.pointList));
+        return Melkman(this.sortByAngle(this.pointList));
     }
 
     // 与x轴
