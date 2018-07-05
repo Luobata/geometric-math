@@ -6,6 +6,10 @@
 import Vector from '@/core/Vector';
 import { IPoint, IPointList } from '@/lib/interface';
 
+// 算法有点问题， 应该不需要排序 有排序 的复杂度是O(nlog(n))
+// 没有排序 只需找出最初的三个点
+//（y最小，y第二小，y第三小，最小有并列取x较小的，非最小的并列取一个x最大 一个x最小 这三个点一定在凸包上
+// 判断左拐的方式应该是 叉乘为正 一定右拐，叉乘为0，点乘（方向）为正 左拐，为负 右拐
 export default (l: IPointList): IPointList => {
     // 头尾两个队列
     const stackH: IPointList = [l[0], l[1]];
