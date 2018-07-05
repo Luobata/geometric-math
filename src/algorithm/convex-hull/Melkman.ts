@@ -18,48 +18,65 @@ export default (l: IPointList): IPointList => {
             y: stackH[stackH.length - 1].y - stackH[stackH.length - 2].y,
         });
         const nowH: Vector = new Vector({
-            x: a.x - stackH[stackH.length - 2].x,
-            y: a.y - stackH[stackH.length - 2].y,
+            x: a.x - stackH[stackH.length - 1].x,
+            y: a.y - stackH[stackH.length - 1].y,
         });
 
-        const lastT: Vector = new Vector({
-            x: stackT[stackT.length - 1].x - stackT[stackT.length - 2].x,
-            y: stackT[stackT.length - 1].y - stackT[stackT.length - 2].y,
-        });
         const nowT: Vector = new Vector({
-            x: a.x - stackT[stackT.length - 2].x,
-            y: a.y - stackT[stackT.length - 2].y,
+            x: stackT[stackT.length - 2].x - stackT[stackT.length - 1].x,
+            y: stackT[stackT.length - 2].y - stackT[stackT.length - 1].y,
+        });
+        const lastT: Vector = new Vector({
+            x: stackT[stackT.length - 1].x - a.x,
+            y: stackT[stackT.length - 1].y - a.y,
         });
 
-        return nowH.cross(lastH) > 0 && nowT.cross(lastT) < 0;
+        return !(nowH.cross(lastH) >= 0 || nowT.cross(lastT) >= 0);
     };
 
     const judge: Function = (
-        a: IPoint,
         stack: IPointList,
+        a: IPoint,
         dir: number = 1,
     ): boolean => {
-        const last: Vector = new Vector({
-            x: stack[stack.length - 1].x - stack[stack.length - 2].x,
-            y: stack[stack.length - 1].y - stack[stack.length - 2].y,
-        });
-        const now: Vector = new Vector({
-            x: a.x - stack[stack.length - 1].x,
-            y: a.y - stack[stack.length - 1].y,
-        });
-
-        return last.cross(now) * dir >= 0;
+        let last: Vector;
+        let now: Vector;
+        if (dir) {
+            last = new Vector({
+                x: stack[stack.length - 1].x - stack[stack.length - 2].x,
+                y: stack[stack.length - 1].y - stack[stack.length - 2].y,
+            });
+            now = new Vector({
+                x: a.x - stack[stack.length - 1].x,
+                y: a.y - stack[stack.length - 1].y,
+            });
+        } else {
+            now = new Vector({
+                x: stack[stack.length - 2].x - stack[stack.length - 1].x,
+                y: stack[stack.length - 2].y - stack[stack.length - 1].y,
+            });
+            last = new Vector({
+                x: stack[stack.length - 1].x - a.x,
+                y: stack[stack.length - 1].y - a.y,
+            });
+        }
+        const result: number = last.cross(now) * dir;
+        if (result === 0) {
+            return last.dot(now) >= 0;
+        } else {
+            return result > 0;
+        }
     };
     // tslint:disable-next-line prefer-for-of
     for (let i: number = 2; i < l.length - 1; i = i + 1) {
         if (!inner(l[i])) {
-            while (stackH.length > 2 && !judge(l[i], stackH)) {
+            while (stackH.length > 2 && !judge(stackH, l[i])) {
                 stackH.pop();
             }
-            while (stackT.length > 2 && !judge(l[i], stackT, -1)) {
+            stackH.push(l[i]);
+            while (stackT.length > 2 && !judge(stackT, l[i], -1)) {
                 stackT.pop();
             }
-            stackH.push(l[i]);
             stackT.push(l[i]);
         }
     }
