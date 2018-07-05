@@ -61,6 +61,7 @@ export default (l: IPointList): IPointList => {
             });
         }
         const result: number = last.cross(now) * dir;
+
         if (result === 0) {
             return last.dot(now) >= 0;
         } else {
@@ -69,7 +70,9 @@ export default (l: IPointList): IPointList => {
     };
     // tslint:disable-next-line prefer-for-of
     for (let i: number = 2; i < l.length - 1; i = i + 1) {
+        // 不在闭合内 即有一个不是左拐了
         if (!inner(l[i])) {
+            // 直到左拐为止
             while (stackH.length > 2 && !judge(stackH, l[i])) {
                 stackH.pop();
             }
@@ -83,5 +86,5 @@ export default (l: IPointList): IPointList => {
     console.log(stackH);
     console.log(stackT);
 
-    return [...stackH, l[l.length - 1]];
+    return stackH.concat(stackT);
 };
