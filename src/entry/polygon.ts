@@ -15,7 +15,6 @@ export default {
         const IPoint2: Polygon = new Polygon(p2);
 
         if (!IPoint1.isConvexHull() || !IPoint2.isConvexHull()) {
-            debugger;
             // 不是闭包 不能使用该方法判断
             return false;
         }
