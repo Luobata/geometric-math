@@ -7,7 +7,7 @@ import Polygon from '@/graphics/Polygon';
 import { IPoint } from '@/lib/interface';
 
 export default class Point {
-    private point: IPoint;
+    public point: IPoint;
 
     constructor(point: IPoint) {
         this.point = point;

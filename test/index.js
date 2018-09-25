@@ -18,6 +18,8 @@ window.onload = () => {
     document.body.appendChild(canvas);
 
     // const g1 = [{ x: 10, y: 10 }, { x: 200, y: 10 }, { x: 150, y: 150 }];
+    const p1 = { x: 60, y: 60 };
+    const p2 = { x: 160, y: 30 };
     const g1 = [
         { x: 50, y: 10 },
         { x: 200, y: 10 },
@@ -84,11 +86,25 @@ window.onload = () => {
         ctx.restore();
     };
 
+    const renderP = (p, color = 'black') => {
+        ctx.save();
+        ctx.beginPath();
+        ctx.strokeStyle = color;
+        ctx.moveTo(p.x * pixelRatio, p.y * pixelRatio);
+        ctx.lineTo((p.x + 1) * pixelRatio, (p.y + 1) * pixelRatio);
+        ctx.closePath();
+        ctx.stroke();
+        ctx.restore();
+    };
+
     const render = () => {
         renderIPoint(g1);
         renderIPoint(g2, 'red');
         renderCirculr(c1);
         renderCirculr(c2);
+
+        renderP(p1);
+        renderP(p2);
     };
 
     render();
@@ -97,9 +113,13 @@ window.onload = () => {
     const c = geometric.polygon.intersectionWithCircular(g2, c1);
     const d = geometric.circluar.intersection(c1, c2);
     const f = geometric.point.findConvexHull(g3);
+    const g = geometric.point.innerPloymer(p1, g1);
+    const h = geometric.point.innerPloymer(p2, g1);
     console.log(`a： ${a}`);
     console.log(`b： ${b}`);
     console.log(`c： ${c}`);
     console.log(`d： ${d}`);
     console.log(`f： ${f}`);
+    console.log(`g： ${g}`);
+    console.log(`h： ${h}`);
 };

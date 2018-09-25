@@ -5,9 +5,9 @@ import Vector from '@/core/Vector';
 import { IPoint, IPointList } from 'LIB/interface';
 
 export default class Polygon {
-    private list: IPointList;
+    public list: IPointList;
     // 各个边向量
-    private listVector: Vector[] = [];
+    public listVector: Vector[] = [];
 
     // list中点的顺序会导致点绘制的顺序，会影响是否是凸包的判断
     constructor(list: IPointList) {
