@@ -44,3 +44,18 @@ export default (p: IPoint | Point, polygon: IPointList | Polygon): boolean => {
     // 奇数在内部 偶数在外部
     return countNum % 2 === 1;
 };
+
+/**
+ * winding-number算法
+ * @doc http://geomalgorithms.com/a03-_inclusion.html
+ */
+
+export const windingNumber: Function = (
+    p: IPoint | Point,
+    polygon: IPointList | Polygon,
+): boolean => {
+    const point: IPoint = isIPoint(p) ? p : p.point;
+    const pointList: IPointList = isArray(polygon) ? polygon : polygon.list;
+
+    return true;
+};
